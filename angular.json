@@ -65,10 +65,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "browserTarget": "frontend_course_proj:build:production"
+              "buildTarget": "frontend_course_proj:build:production"
             },
             "development": {
-              "browserTarget": "frontend_course_proj:build:development"
+              "buildTarget": "frontend_course_proj:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -76,7 +76,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "frontend_course_proj:build"
+            "buildTarget": "frontend_course_proj:build"
           }
         },
         "test": {
