@@ -1,0 +1,14 @@
+.link {
+    min-width: 170px;
+    height: auto;
+    padding: 12px;
+    border-right: 1px solid rgba(0, 0, 0, .08);
+    border-bottom: 1px solid rgba(0, 0, 0, .08);
+    cursor: pointer;
+    text-decoration: none;
+    color: #000;
+    background-clip: padding-box;
+    transition-duration: .12s;
+    transition-timing-function: ease-in-out;
+    transition-property: background-color;
+}
