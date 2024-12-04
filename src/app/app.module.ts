@@ -5,6 +5,9 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HeaderComponent } from "./components/header/header.component";
 import { NavBarComponent } from "./components/nav-bar/nav-bar/nav-bar.component";
+import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
+import { HttpClientModule, provideHttpClient, withInterceptors } from '@angular/common/http';
+import { authInterceptor } from 'src/shared/interceptors/auth.interceptor';
 
 @NgModule({
   declarations: [
@@ -14,9 +17,13 @@ import { NavBarComponent } from "./components/nav-bar/nav-bar/nav-bar.component"
     BrowserModule,
     AppRoutingModule,
     HeaderComponent,
-    NavBarComponent
+    NavBarComponent,
+    HttpClientModule
 ],
-  providers: [],
+  providers: [
+    provideAnimationsAsync(),
+    provideHttpClient(withInterceptors([authInterceptor]))
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

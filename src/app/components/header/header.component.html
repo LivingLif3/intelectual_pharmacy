@@ -1,1 +1,17 @@
-<div class="header"></div>
+<div class="header">
+    <div class="left block">
+        <div class="location clickable">Minsk</div>
+    </div>
+    <div class="middle block">
+        @if (!showInput()) {
+            <div class="search-bar" >
+                <input class="clickable" type="text" placeholder="Поиск лекарств">
+            </div>
+        }
+    </div>
+    <div class="right block">
+        <div class="auth">
+            <span class="clickable" [routerLink]="['auth']">Войти</span>
+        </div>
+    </div>
+</div>

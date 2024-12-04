@@ -1,10 +1,11 @@
 import { Component } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { CommonModule, NgFor } from '@angular/common';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-nav-bar',
   standalone: true,
-  imports: [CommonModule],
+  imports: [NgFor, RouterLink],
   templateUrl: './nav-bar.component.html',
   styleUrls: ['./nav-bar.component.scss']
 })
@@ -12,7 +13,11 @@ export class NavBarComponent {
   readonly links = [
     {
       label: "Поиск лекарств",
-      path: ""
+      path: "catalogue"
+    },
+    {
+      label: "Бот консультант",
+      path: "chat"
     },
     {
       label: "Услуги",

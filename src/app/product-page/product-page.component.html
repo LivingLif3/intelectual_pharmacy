@@ -1,0 +1,41 @@
+<div class="product">
+    <div class="content">
+        <div class="product-info">
+            @if (product(); as product) {
+                <div class="title">
+                    <h1>{{product.title.toUpperCase()}}</h1>
+                    <mat-icon class="material-symbols-outlined">bookmark_heart</mat-icon>
+                </div>
+                <div class="price"><b>Стоимость</b>: {{product.price}}</div>
+                <div class="brand"><b>Производитель</b>: {{product.brand}}</div>
+                <div class="expiration-date"><b>Годен до</b>: {{product.expiration_date | date}}</div>
+                <div class="addition-date"><b>Изготовлен</b>: {{product.addition_date | date}}</div>
+                <div class="is_in_stock"><b>Есть на складе</b>: {{product.is_in_stock ? ' Да' : ' Нет'}}</div>
+                <div class="average_rating"><b>Рейтинг</b>: {{product.average_rating}} <mat-icon class="material-symbols-outlined">star</mat-icon>
+                </div>
+                <div class="barcode"><b>Номер</b>: {{product.barcode}}</div>
+                <div class="amount"><b>Кол-во</b>: {{product.amount}}</div>
+                <div class="info"><b>Описание</b>: {{product.info}}</div>
+            }
+        </div>
+        <div class="comments">
+            <div>
+                <h2>Комментарии</h2>
+            </div>
+            <div>
+                <form [formGroup]="form">
+                    <mat-form-field>
+                        <mat-label>Leave a comment</mat-label>
+                        <textarea matInput formControlName="comment" class="textarea"></textarea>
+                    </mat-form-field>
+                    <button mat-raised-button>Basic</button>
+                </form>
+            </div>
+            <div class="comment-container">
+                @for (comment of comments(); track $index) {
+                    <app-comment [data]="comment"></app-comment>
+                }
+            </div>
+        </div>
+    </div>
+</div>

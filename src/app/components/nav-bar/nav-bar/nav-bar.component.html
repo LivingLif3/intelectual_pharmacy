@@ -1,6 +1,6 @@
 <div class="nav-bar">
     @for (link of links; track $index) {
-        <div class="link">
+        <div class="link" [routerLink]="[link.path]">
             {{ link.label }}
         </div>
     }
