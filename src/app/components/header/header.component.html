@@ -5,7 +5,8 @@
     <div class="middle block">
         @if (!showInput()) {
             <div class="search-bar" >
-                <input class="clickable" type="text" placeholder="Поиск лекарств">
+                <input class="clickable" type="text" [formControl]="searchControl" placeholder="Поиск лекарств">
+              <button mat-raised-button (click)="onSearchByDescription()">Поиск</button>
             </div>
         }
     </div>

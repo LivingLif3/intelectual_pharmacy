@@ -5,12 +5,13 @@ import { ActivatedRoute } from '@angular/router';
 import { CommentComponent } from './components/comment/comment.component';
 import { toSignal } from '@angular/core/rxjs-interop';
 import { CatalagService } from 'src/shared/catalag.service';
-import { map } from 'rxjs';
+import {catchError, map, of, switchMap} from 'rxjs';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { NonNullableFormBuilder, ReactiveFormsModule } from '@angular/forms';
 import {MatInputModule} from '@angular/material/input';
 import {MatButtonModule} from '@angular/material/button';
 import { AuthService } from 'src/shared/auth.service';
+import {MatSnackBar} from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-product-page',
@@ -24,6 +25,7 @@ export class ProductPageComponent implements OnInit {
   private readonly catalogService = inject(CatalagService)
   private readonly fb = inject(NonNullableFormBuilder)
   private readonly authService = inject(AuthService)
+  private snackBar = inject(MatSnackBar)
 
   public readonly product = signal<any>({
     title: 'new prod',
@@ -34,7 +36,7 @@ export class ProductPageComponent implements OnInit {
     is_in_stock: true,
     average_rating: 4,
     barcode: 1234,
-    amount: 2, 
+    amount: 2,
     info: "info"
   })
 
@@ -59,17 +61,42 @@ export class ProductPageComponent implements OnInit {
 
   readonly idParam = toSignal(
     this.activatedRoute.params.pipe(
-      map(params => params['id']) 
+      map(params => params['id'])
     )
   );
 
   ngOnInit() {
     const id: any = this.idParam()
 
-    this.catalogService.getCatalogue(id).subscribe(catalogue => this.product.set(catalogue))
+    this.catalogService.getCatalogue(id).subscribe(catalogue => {
+      console.log(catalogue)
+      this.product.set(catalogue)
+    })
 
     this.catalogService.getComments(id).subscribe(comments => this.comments.set(comments))
+  }
 
-    this.authService.getUser().subscribe(console.log)
+  createComment() {
+    const id = this.idParam()
+
+    if(!id) return
+
+    if(!this.form.get('comment')?.value) return
+
+    this.catalogService.createComment(id, this.form.get('comment')?.value)
+      .pipe(
+        catchError(() => {
+          this.openSnackBar('В комментарии присутствует нецензурная лексика')
+          return of(null)
+        }),
+        switchMap(() => this.catalogService.getComments(id))
+      ).subscribe((comments) => {
+      this.comments.set(comments)
+      this.form.get('comment')?.reset()
+    })
+  }
+
+  openSnackBar(message: string) {
+    this.snackBar.open(message, 'Dismiss');
   }
 }

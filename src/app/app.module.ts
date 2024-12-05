@@ -22,7 +22,7 @@ import { authInterceptor } from 'src/shared/interceptors/auth.interceptor';
 ],
   providers: [
     provideAnimationsAsync(),
-    provideHttpClient(withInterceptors([authInterceptor]))
+    // provideHttpClient(withInterceptors([authInterceptor]))
   ],
   bootstrap: [AppComponent]
 })

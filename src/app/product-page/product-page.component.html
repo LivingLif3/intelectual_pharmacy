@@ -28,7 +28,7 @@
                         <mat-label>Leave a comment</mat-label>
                         <textarea matInput formControlName="comment" class="textarea"></textarea>
                     </mat-form-field>
-                    <button mat-raised-button>Basic</button>
+                    <button mat-raised-button (click)="createComment()">Basic</button>
                 </form>
             </div>
             <div class="comment-container">

@@ -1,7 +1,8 @@
 <div class="card">
     <div class="content">
+
         <div class="title"><h1 class="title">{{data()!.title}}</h1></div>
-        <div class="category info-value"><span class="info">Категория: </span>{{data()!.category.title}}</div>
+        <div class="category info-value"><span class="info">Категория: </span>{{data()!.category?.title ?? ''}}</div>
         <div class="brand info-value"><span class="info">Произведен: </span>{{data()!.brand}}</div>
         <div class="price info-value"><span class="info">Стоимость: </span>{{data()!.price}}</div>
         <div class="is_in_stock info-value"><span class="info">В наличии: </span>{{data()!.is_in_stock ? 'да' : 'нет'}}</div>

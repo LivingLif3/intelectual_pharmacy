@@ -1,15 +1,13 @@
 <div class="catalogue-list-wrapper">
-    @if(catalogues(); as catalogues) {
         <div class="content">
-            @for (item of catalogues; track item.id) {
-                <app-catalogue-card [routerLink]="['..', 'product', item.slug]" [data]="item"></app-catalogue-card>
+            @for (item of catalogService.products | async; track item.id) {
+                <app-catalogue-card [routerLink]="['..', 'product', item.id]" [data]="item"></app-catalogue-card>
             }
         </div>
-    }
 </div>
 
-<mat-paginator #paginator
-               class="demo-paginator"
-               (page)="handlePageEvent($event)"
-               aria-label="Select page">
-</mat-paginator>
+<!--<mat-paginator #paginator-->
+<!--               class="demo-paginator"-->
+<!--               (page)="handlePageEvent($event)"-->
+<!--               aria-label="Select page">-->
+<!--</mat-paginator>-->

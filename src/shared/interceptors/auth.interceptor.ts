@@ -14,9 +14,11 @@ export const authInterceptor: HttpInterceptorFn = (req, next) => {
     headers: req.headers.set('Authorization', `Bearer ${accessToken}`)
   })
 
-  // if(clonedRequest.url.includes('refresh')) {
-  //   return throwError(() => new Error('Unauthorized'))
-  // }
+  if(clonedRequest.url.includes('refresh')) {
+    return throwError(() => new Error('Unauthorized'))
+  } else if(clonedRequest.url.includes('new_customer')) {
+    next(req)
+  }
 
   return next(clonedRequest).pipe(
     catchError((error: HttpErrorResponse) => {

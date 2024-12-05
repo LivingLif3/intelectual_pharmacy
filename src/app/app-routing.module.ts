@@ -2,10 +2,10 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
 const routes: Routes = [
-  {
-    path: 'main',
-    loadComponent: () => import('./main-page/main-page.component').then(v => v.MainPageComponent)
-  },
+  // {
+  //   path: 'main',
+  //   loadComponent: () => import('./main-page/main-page.component').then(v => v.MainPageComponent)
+  // },
   {
     path: 'auth',
     loadComponent: () => import('./auth-page/auth-page.component').then(v => v.AuthPageComponent)
@@ -29,7 +29,7 @@ const routes: Routes = [
   {
     path: '',
     pathMatch: 'full',
-    redirectTo: 'main'
+    redirectTo: 'catalogue'
   }
 ];
 
