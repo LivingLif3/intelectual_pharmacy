@@ -50,6 +50,7 @@ export class HeaderComponent implements OnInit {
 
       recognition.onresult = (event: any) => {
         console.log('Результат:', event.results[0][0].transcript);
+        this.searchControl.setValue(event.results[0][0].transcript)
       };
 
       recognition.onerror = (event: any) => {
