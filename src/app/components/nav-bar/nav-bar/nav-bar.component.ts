@@ -19,6 +19,10 @@ export class NavBarComponent {
       label: "Бот консультант",
       path: "chat"
     },
+    {
+      label: "О нас",
+      path: "about-us"
+    },
     // {
     //   label: "Услуги",
     //   path: ""

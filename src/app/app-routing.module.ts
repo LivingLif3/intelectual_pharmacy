@@ -27,6 +27,10 @@ const routes: Routes = [
     loadComponent: () => import('./product-page/product-page.component').then(v => v.ProductPageComponent)
   },
   {
+    path: 'about-us',
+    loadComponent: () => import('./about-us-page/about-us-page.component').then(v => v.AboutUsPageComponent)
+  },
+  {
     path: '',
     pathMatch: 'full',
     redirectTo: 'catalogue'

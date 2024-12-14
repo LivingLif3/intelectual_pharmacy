@@ -33,8 +33,6 @@ export class HeaderComponent implements OnInit {
           this.showInput.set(false)
         }
       })
-
-      this.startSpeechRecognition()
   }
 
   startSpeechRecognition() {
@@ -42,9 +40,29 @@ export class HeaderComponent implements OnInit {
       // @ts-ignore
       const SpeechRecognition: any = window.SpeechRecognition || window.webkitSpeechRecognition;
       const recognition = new SpeechRecognition();
-      console.log(recognition)
-    }
 
+      recognition.interimResults = false;
+      recognition.maxAlternatives = 1;
+
+      recognition.onstart = () => {
+        console.log('Начато распознавание речи');
+      };
+
+      recognition.onresult = (event: any) => {
+        console.log('Результат:', event.results[0][0].transcript);
+      };
+
+      recognition.onerror = (event: any) => {
+        console.error('Ошибка:', event.error);
+      };
+
+      recognition.onend = () => {
+        console.log('Распознавание завершено');
+      };
+
+      recognition.start();
+      console.log(recognition)
+      }
   }
 
   onSearchByDescription() {
