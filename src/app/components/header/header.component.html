@@ -6,8 +6,8 @@
         @if (!showInput()) {
             <div class="search-bar" >
                 <input class="clickable" type="text" [formControl]="searchControl" placeholder="Поиск лекарств">
-              <button mat-raised-button (click)="onSearchByDescription()">Поиск</button>
-              <button (click)="startSpeechRecognition()">start speech</button>
+              <button mat-raised-button class="search" (click)="onSearchByDescription()">Поиск</button>
+              <button class="micro" (click)="startSpeechRecognition()"><mat-icon fontIcon="mic"></mat-icon></button>
             </div>
         }
     </div>

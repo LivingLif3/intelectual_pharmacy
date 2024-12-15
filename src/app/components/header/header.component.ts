@@ -6,11 +6,12 @@ import { filter } from 'rxjs';
 import {MatButton} from "@angular/material/button";
 import {CatalagService} from "../../../shared/catalag.service";
 import {NonNullableFormBuilder, ReactiveFormsModule} from "@angular/forms";
+import {MatIconModule} from '@angular/material/icon';
 
 @Component({
   selector: 'app-header',
   standalone: true,
-    imports: [RouterLink, MatInputModule, MatFormFieldModule, MatButton, ReactiveFormsModule],
+  imports: [RouterLink, MatInputModule, MatFormFieldModule, MatButton, ReactiveFormsModule, MatIconModule],
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.scss']
 })

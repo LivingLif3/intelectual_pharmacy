@@ -43,3 +43,18 @@ input {
 .clickable {
     cursor: pointer;
 }
+
+.search {
+    margin-left: 10px;
+}
+
+.micro {
+    padding: 5px;
+    display: flex;
+    justify-content: center;
+    margin-left: 10px;
+    border-radius: 20px;
+    align-items: center;
+    border: none;
+    cursor: pointer;
+}
